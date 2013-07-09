@@ -20,11 +20,54 @@
 
 using namespace std;
 
+template<class T>
 class Queue
 {
 public:
     Queue(int d = 2);
+    ~Queue();
+    
+    void enq(T*);
+    T* deq();
+    T* front();
+    bool isEmpty() const;
+    bool isFull() const;
+    
+private:
+    
+    int back;
+    T* *arr;
+    int size;
+    static const int SIZE = 10;
+    int D;
+    
+    Queue(const Queue&);
+    const Queue & operator = (const Queue&);
+    
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
