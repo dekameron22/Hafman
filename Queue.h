@@ -44,6 +44,10 @@ private:
     Queue(const Queue&);
     const Queue & operator = (const Queue&);
     
+    void reheapup (int, int);
+    void reheapdown (int, int);
+    void swap (T* &, T* &);
+    
 };
 
 

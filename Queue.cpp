@@ -48,7 +48,7 @@ T* Queue<T>::deq()
     arr[0] = arr[back-1];
     --back;
     
-    //method
+    reheapdown(0, back-1);
     return rval;
     
 }
@@ -83,15 +83,71 @@ void Queue<T>::enq(T* foo)
     }
     
     arr[back++]=foo;
-    //method
+    reheapup(0, back-1);
 }
 
+template<class T>
+void Queue<T>::reheapup(int root, int bottom)
+{
+    int parent;
+    
+    if (bottom > root)
+    {
+        parent = (bottom-1)/D;
+    }
+    
+    if (*arr[parent] > *arr[bottom])
+    {
+        swap(arr[parent], arr[bottom]);
+        reheapup(root, parent);
+    }
+}
 
+template <class T>
+void Queue<T>::reheapdown(int root, int bottom)
+{
+    int minchild, firstchild, child;
+    
+    firstchild = root*D+1;
+    
+    if (firstchild <= bottom)
+    {
+        minchild = firstchild;
+        
+        for (int i = 2; i <= D; ++i)
+        {
+            child = root*D+i;
+            if (child<=bottom)
+            {
+                if (*arr[minchild] < *arr[child])
+                {
+                    minchild = child;
+                }
+            }
+        }
+        
+        if (*arr[root] > *arr[minchild])
+        {
+            swap(arr[root], arr[minchild]);
+            reheapdown(minchild, bottom);
+        }
+    }
+}
 
+template <class T>
+void Queue<T>::swap(T* &a, T* &b)
+{
+    T* c;
+    c=a;
+    a=b;
+    b=c;
+}
 
-
-
-
+template <class T>
+Queue<T>::~Queue<T>()
+{
+    delete [] arr;
+}
 
 
 
