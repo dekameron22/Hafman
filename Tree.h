@@ -57,6 +57,11 @@ public:
 
     //перегрузити оператори!!!!
     //
+    
+    void huf(Node *, unsigned char, string, string &) const;
+    void huf_list(Node *, string) const;
+    bool get_juf_char(string, unsigned char &) const;
+    string print_char(Node *) const;
 
 };
 
