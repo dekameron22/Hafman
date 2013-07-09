@@ -12,8 +12,8 @@
 #include<iostream>
 #include<fstream>
 #include<string>
-#include<iomanip> //for width()
-#include<cctype> //for sprintf()
+#include<iomanip>
+#include<cctype> 
 
 #define HELP_ERROR 99
 #define width_unit 5
