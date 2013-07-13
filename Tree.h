@@ -25,11 +25,12 @@ class Tree
 private:
     class Node
     {
+    public:
         unsigned int freq;
         unsigned char ch;
         Node *left, *right;
         
-        Node():freq(0), ch('\0'),left(nullptr), right(nullptr){};
+        Node(void):freq(0), ch('\0'),left(nullptr), right(nullptr){};
     };
     
     Node *root;
@@ -43,20 +44,24 @@ public:
     Tree();
     ~Tree();
     
-    friend ostream operator<<(ostream &, const Tree &);
+    friend ostream & operator<<(ostream &, const Tree &);
     
     unsigned int get_freq(void) const;
     unsigned char get_char(void) const;
     void set_freq(unsigned int);
     void set_char(unsigned char);
-    Node get_left(void) const;
-    Node get_right(void) const;
+    Node *get_left(void) const;
+    Node *get_right(void) const;
     void set_left(Node *) const;
     void set_right(Node *) const;
     Node *get_root(void) const;
 
-    //перегрузити оператори!!!!
-    //
+    bool operator==(const Tree &t) const;
+    bool operator!=(const Tree &t) const;
+    bool operator<(const Tree &t) const;
+    bool operator>(const Tree &t) const;
+    bool operator<=(const Tree &t) const;
+    bool operator>=(const Tree &t) const;
     
     void huf(Node *, unsigned char, string, string &) const;
     void huf_list(Node *, string) const;
