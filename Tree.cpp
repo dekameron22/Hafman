@@ -100,6 +100,34 @@ ostream & operator<<(ostream &ost, const Tree &t)
     return ost;
 }
 
+string Tree::print_char(Node * N) const
+{
+    string s = "";
+    
+    if (!N->left && !N->right)
+    {
+        unsigned char c = N->ch;
+        
+        if (iscntrl(c) || c == 32)
+        {
+            char *cp = new char;
+            for (int i = 0; i<3; ++i)
+            {
+                sprintf(cp, "%i", c%8);
+                c-=c%8;
+                c/=8;
+                s = (*cp)+s;
+            }
+            s = '/'+s;
+        }
+        else
+        {
+            s = c;
+        }
+    }
+    return s;
+}
+
 bool Tree::operator==(const Tree &t) const
 {
     return (root->freq == t.root->freq);

@@ -22,7 +22,7 @@ using namespace std;
 
 class Tree
 {
-private:
+protected:
     class Node
     {
     public:
@@ -55,6 +55,8 @@ public:
     void set_left(Node *) const;
     void set_right(Node *) const;
     Node *get_root(void) const;
+    
+    string print_char(Node *) const;
 
     bool operator==(const Tree &t) const;
     bool operator!=(const Tree &t) const;
@@ -63,11 +65,7 @@ public:
     bool operator<=(const Tree &t) const;
     bool operator>=(const Tree &t) const;
     
-    void huf(Node *, unsigned char, string, string &) const;
-    void huf_list(Node *, string) const;
-    bool get_juf_char(string, unsigned char &) const;
-    string print_char(Node *) const;
-
+    
 };
 
 #endif /* defined(__Hafman__Tree__) */
